@@ -22,7 +22,7 @@ def first_missing_positive_int(array):
 
     i = start
     while i < end:
-        value_index = abs(array[i]) - 1
+        value_index = abs(array[i]) + start - 1
 
         if value_index < end and array[value_index] > 0:
             array[value_index] = -1 * array[value_index]
@@ -32,7 +32,7 @@ def first_missing_positive_int(array):
     i = start
     while i < end:
         if (array[i] > 0):
-            return (i + 1) - (start - 1)
+            return i - start + 1
 
         i += 1
 
@@ -44,5 +44,5 @@ if __name__ == '__main__':
     assert first_missing_positive_int([1, 2, 3, 4, 5, 6]) == 7
     assert first_missing_positive_int([-1, -2, -3, -4]) == 1
     assert first_missing_positive_int([-1, -2, -3, 1, -4]) == 2
-    assert first_missing_positive_int([3, 4, -1, 1]) == 2
+    assert first_missing_positive_int([3, 4, -1, 1, 7, -3, 5]) == 2
     assert first_missing_positive_int([1, 2, 0]) == 3
